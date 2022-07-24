@@ -65,16 +65,16 @@ for (dlight in list(c(0,  2, 3), c( 0,  0, 1), c(0, -2, 3))) {
     dn = dlight[1]*nx + dlight[2]*ny + dlight[3]*nz  # (DIMX-2)x(DIMY-2) matrix
     
     # Reflectance
-    costheta=dn/(dlightM*nM)
-    costheta[costheta<0]=0  # clip negative values
+    hillshade=dn/(dlightM*nM)  # hillshade = cos(theta)
+    hillshade[hillshade<0]=0  # clip negative values
     
     # Save hillshade in TIFF
-    writeTIFF(costheta^(1/0.5),
+    writeTIFF(hillshade^(1/0.5),
         paste0("hillshade",dlight[1],dlight[2],dlight[3],".tif"),
         bits.per.sample=16, compression="LZW")
     }
 
 # Display hillshade
-image(t(costheta[nrow(costheta):1,]), useRaster=TRUE,
+image(t(hillshade[nrow(hillshade):1,]), useRaster=TRUE,
       col=c(gray.colors(80, start=0, end=1, gamma=1)),
-      asp=nrow(costheta)/ncol(costheta), axes=F)
+      asp=nrow(hillshade)/ncol(hillshade), axes=F)
