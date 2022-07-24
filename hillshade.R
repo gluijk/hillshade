@@ -1,6 +1,6 @@
 # Construyendo mapas de sombras hillshade con R
 # www.overfitting.net
-# https://www.overfitting.net/2020/10/procesado-de-mapas-raster-con-r.html
+# https://www.overfitting.net/2022/07/construyendo-mapas-de-sombras-hillshade.html
 
 library(data.table)  # fread()
 library(tiff)
