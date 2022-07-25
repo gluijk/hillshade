@@ -44,7 +44,7 @@ writeTIFF(DEMnorm^(1/1.8),"DEM.tif",
 # Display DEM
 image(t(DEM[nrow(DEM):1,]), useRaster=TRUE,
       col=c(gray.colors(256, start=0, end=1, gamma=1.8)),
-      asp=DIMX/DIMY, axes=FALSE)
+      asp=nrow(DEM)/ncol(DEM), axes=FALSE)
 
 
 # Lighting direction
@@ -77,4 +77,4 @@ for (dlight in list(c(0, 2, 3), c(0, 0, 1), c(0, -2, 3))) {
 # Display hillshade
 image(t(hillshade[nrow(hillshade):1,]), useRaster=TRUE,
       col=c(gray.colors(256, start=0, end=1, gamma=0.5)),
-      asp=nrow(hillshade)/ncol(hillshade), axes=F)
+      asp=nrow(hillshade)/ncol(hillshade), axes=FALSE)
