@@ -59,12 +59,12 @@ for (dlight in list(c(0,  2, 3), c( 0,  0, 1), c(0, -2, 3))) {
     nx = 2*dx*(DEM[1:(DIMX-2), 2:(DIMY-1)] - DEM[3:DIMX,     2:(DIMY-1)])
     ny = 2*dx*(DEM[2:(DIMX-1), 1:(DIMY-2)] - DEM[2:(DIMX-1), 3:DIMY])
     nz = 4*dx^2
-    nM = (nx^2+ny^2+nz^2)^0.5
+    nM = (nx^2 + ny^2 + nz^2)^0.5
     
     # Dot product
     dn = dlight[1]*nx + dlight[2]*ny + dlight[3]*nz  # (DIMX-2)x(DIMY-2) matrix
     
-    # Reflectance as cos(theta)
+    # Reflectance
     hillshade=dn/(dlightM*nM)  # hillshade = cos(theta)
     hillshade[hillshade<0]=0  # clip negative values
     
