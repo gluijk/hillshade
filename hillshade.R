@@ -35,7 +35,7 @@ dx=25  # DEM resolution (m)
 DIMX=nrow(DEM)
 DIMY=ncol(DEM)
 
-# Save DEM in TIFF
+# Save DEM
 DEMnorm=DEM-min(DEM)
 DEMnorm=DEMnorm/max(DEMnorm)
 writeTIFF(DEMnorm^(1/1.8),"DEM.tif",
@@ -64,11 +64,11 @@ for (dlight in list(c(0,  2, 3), c( 0,  0, 1), c(0, -2, 3))) {
     # Dot product
     dn = dlight[1]*nx + dlight[2]*ny + dlight[3]*nz  # (DIMX-2)x(DIMY-2) matrix
     
-    # Reflectance
+    # Reflectance as cos(theta)
     hillshade=dn/(dlightM*nM)  # hillshade = cos(theta)
     hillshade[hillshade<0]=0  # clip negative values
     
-    # Save hillshade in TIFF
+    # Save hillshade
     writeTIFF(hillshade^(1/0.5),
         paste0("hillshade",dlight[1],dlight[2],dlight[3],".tif"),
         bits.per.sample=16, compression="LZW")
@@ -76,5 +76,5 @@ for (dlight in list(c(0,  2, 3), c( 0,  0, 1), c(0, -2, 3))) {
 
 # Display hillshade
 image(t(hillshade[nrow(hillshade):1,]), useRaster=TRUE,
-      col=c(gray.colors(80, start=0, end=1, gamma=1)),
+      col=c(gray.colors(80, start=0, end=1, gamma=0.5)),
       asp=nrow(hillshade)/ncol(hillshade), axes=F)
