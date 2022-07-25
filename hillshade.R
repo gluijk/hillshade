@@ -70,8 +70,8 @@ for (dlight in list(c(0, 2, 3), c(0, 0, 1), c(0, -2, 3))) {
     
     # Save hillshade
     writeTIFF(hillshade^(1/0.5),
-        paste0("hillshade",dlight[1],dlight[2],dlight[3],".tif"),
-        bits.per.sample=16, compression="LZW")
+              paste0("hillshade",dlight[1],dlight[2],dlight[3],".tif"),
+              bits.per.sample=16, compression="LZW")
     }
 
 # Display hillshade
