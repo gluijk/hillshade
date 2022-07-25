@@ -48,7 +48,7 @@ image(t(DEM[nrow(DEM):1,]), useRaster=TRUE,
 
 
 # Lighting direction
-for (dlight in list(c(0, 2, 3), c( 0, 0, 1), c(0, -2, 3))) {
+for (dlight in list(c(0, 2, 3), c(0, 0, 1), c(0, -2, 3))) {
     # dlight=c(0, 2, 3)  # sunrise
     # dlight=c(0, 0, 1)  # midday
     # dlight=c(0,-2, 3)  # sunset
