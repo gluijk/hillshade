@@ -8,7 +8,7 @@ library(tiff)
 
 # Centro de Descargas del Centro Nacional de Información Geográfica
 # Modelos de elevaciones en formato raster MDT25
-# Cotas en m, resolución rejilla=25m
+# Cotas en m. Resolución rejilla=25m
 # URL: http://centrodedescargas.cnig.es/CentroDescargas/index.jsp
 
 # Leemos y procesamos datos raster
